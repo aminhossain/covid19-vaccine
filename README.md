@@ -35,12 +35,18 @@ cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env
 ```
 
-### 3. Build and Run the Project
+### 3. Install The Dependencies
+```bash
+cd backend && composer install
+cd frontend && npm install
+```
+
+### 4. Build and Run the Project
 ```bash
 docker-compose up --build
 ```
 
-### 4. Browse the project
+### 5. Browse the project
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8080
 
