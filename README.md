@@ -46,7 +46,7 @@ cd frontend && npm install
 docker-compose up --build
 ```
 
-### 5. Browse the project
+### 5. Browse the Project
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8080
 
@@ -75,7 +75,6 @@ php artisan queue:work
     ```
 
 ## Run the Feature Test
-- Start the queue worker:
 ```bash
 docker exec -it laravel_app bash
 php artisan test
