@@ -35,7 +35,7 @@ cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env
 ```
 
-### 3. Install The Dependencies
+### 3. Install the Dependencies
 ```bash
 cd backend && composer install
 cd frontend && npm install
@@ -49,6 +49,13 @@ docker-compose up --build
 ### 5. Browse the project
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8080
+
+### Additional Commands
+```bash
+docker exec -it laravel_app bash    # to run an interactive shell in docker backend container
+docker exec -it react_app /bin/sh   # to run an interactive shell in docker frontend container
+docker-compose logs backend         # to troubleshooting any backend issue
+```
 
 ## API Endpoints
 - GET /api/vaccine-centers - Fetch all vaccine centers
