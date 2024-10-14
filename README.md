@@ -62,6 +62,25 @@ docker-compose logs backend         # to troubleshooting any backend issue
 - POST /api/register - Register a user for vaccination
 - GET /api/search - Search user vaccination status by NID
 
+## Test the Notification System
+- Start the queue worker:
+```bash
+php artisan queue:work
+```
+- Now, to verify that the scheduled notifications are working:
+  - Add some test users with scheduled vaccination dates in the database.
+  - Manually trigger the scheduled task (if you don’t want to wait until 9 PM) by running:
+    ```bash
+    php artisan schedule:run
+    ```
+
+## Run the Feature Test
+- Start the queue worker:
+```bash
+docker exec -it laravel_app bash
+php artisan test
+```
+
 ## Performance Optimization
 - **Indexing:** Proper database indexing has been applied on fields like nid and vaccine_center_id to optimize search and registration speed.
 - **Caching:** Future implementations may include query caching for frequently accessed data such as vaccine centers.
@@ -72,5 +91,8 @@ docker-compose logs backend         # to troubleshooting any backend issue
 - Install the relevant packages (e.g., twilio/sdk).
 - Update the UserNotificationJob to send SMS along with emails.
 - Add necessary configurations for the SMS provider in .env.
+
+## Contact
+If you discover any kind of issue or need assistance, please send an e-mail to [aminhossain283@gmail.com](mailto:aminhossain283@gmail.com). I will get back to you as soon as possible. Thank you.
 
 

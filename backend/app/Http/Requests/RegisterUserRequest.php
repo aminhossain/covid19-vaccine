@@ -14,7 +14,7 @@ class RegisterUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nid' => 'required|unique:users,nid',   // NID must be unique
+            'nid' => ['required', 'unique:users,nid', 'regex:/^\d{10}$|^\d{13}$/'],   // NID must be unique
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',   // Email must be unique and valid
             'date' => 'required|date|after_or_equal:today',   // Date must be today or in the future
@@ -27,6 +27,7 @@ class RegisterUserRequest extends FormRequest
         return [
             'nid.required' => 'National ID is required.',
             'nid.unique' => 'You are already registered.',
+            'nid.regex' => 'The National ID must be either 10 or 13 digits long.',
             'name.required' => 'Name is required.',
             'email.required' => 'Email is required.',
             'email.email' => 'Please enter a valid email address.',
