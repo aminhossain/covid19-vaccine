@@ -32,7 +32,7 @@ class RegistrationService
             'scheduled_date' => $scheduledDate,
         ]);
 
-        if($scheduledDate != Carbon::createFromFormat('Y-m-d', $data['date'])) {
+        if(date('Y-m-d', strtotime($scheduledDate)) != date('Y-m-d', strtotime($data['date']))) {
             $message = "Sorry! the selected date is not available. Your earliest vaccination date is set to {$scheduledDate}";
         } else {
             $message = "Congratulation! Your vaccination date is set to {$scheduledDate}";
@@ -70,7 +70,7 @@ class RegistrationService
     // Check if a date is a weekday (Sunday to Thursday)
     protected function isWeekday(Carbon $date)
     {
-        return $date->isWeekday() && $date->dayOfWeek !== Carbon::FRIDAY && $date->dayOfWeek !== Carbon::SATURDAY;
+        return $date->dayOfWeek !== Carbon::FRIDAY && $date->dayOfWeek !== Carbon::SATURDAY;
     }
 
     // Count vaccinations scheduled for a specific date
